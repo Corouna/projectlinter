@@ -2,14 +2,14 @@ import React from 'react';
 import { Switch, Route, useLocation } from 'react-router-dom';
 
 /* Pages */
-import { Main } from './pages';
+import { Dashboard, Linting } from './pages';
 
 const Routes = props => {
 	const location = useLocation();
 
 	return (
 		<Switch location={location}>
-			<Route path="/" render={ props => <Main /> } />
+			<Route path="/" render={ props => <Dashboard /> } />
 		</Switch>
 	);
 }

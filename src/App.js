@@ -1,13 +1,25 @@
 import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
 import { BrowserRouter } from 'react-router-dom';
 import Routes from './Routes';
 
-function App() {
+const styles = theme => ({ 
+	container: {
+		display: 'flex',
+		justifyContent: 'center'
+	}
+});
+
+const App = props => {
+	const { classes } = props;
+
   return (
-    <BrowserRouter>
-      <Routes />
-    </BrowserRouter>
+  	<div className={classes.container}>
+	    <BrowserRouter>
+	      <Routes />
+	    </BrowserRouter>
+    </div>
   );
 }
 
-export default App;
+export default withStyles(styles)(App);
