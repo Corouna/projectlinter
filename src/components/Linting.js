@@ -79,6 +79,7 @@ const Linting = props => {
 		}
 	}, [build])
 
+
 	return (
 		<Grid item xs={12} container direction="row" className={classes.base}>
 			<Grid item xs={12} container justify="center">
