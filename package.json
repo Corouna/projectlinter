@@ -23,7 +23,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "eslint": "eslint src/App.js src/components/** src/pages/** src/utils/**"
+    "eslint": "eslint src/App.js src/components/** src/pages/** src/utils/**",
+    "jest": "jest --verbose ./test"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -42,6 +43,7 @@
   },
   "devDependencies": {
     "eslint": "^6.8.0",
-    "eslint-plugin-react": "^7.18.3"
+    "eslint-plugin-react": "^7.18.3",
+    "jest": "^25.1.0"
   }
 }
