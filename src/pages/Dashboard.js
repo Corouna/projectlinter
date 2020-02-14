@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Grid, Typography, Divider, Button } from '@material-ui/core';
-import { Linting, UnitTest } from './../components';  
+import { Linting, UnitTest, Footer } from './../components';  
 
 const styles = theme => ({
 	base: {
@@ -26,7 +26,7 @@ const Dashboard = props => {
 	return (
 		<Grid container className={classes.base}>
 			<Grid item xs={6}>
-				<Typography variant="h5" style={{ fontWeight: 600 }}>{'Test centre'}</Typography>
+				<Typography variant="h5" style={{ fontWeight: 600 }}>{'Dev Center'}</Typography>
 			</Grid>
 			<Grid item xs={6} container justify="flex-end">
 				<Button onClick={showLinting}><Typography variant="overline">Linting</Typography></Button>
@@ -37,14 +37,15 @@ const Dashboard = props => {
 				<Button onClick={showSDL}><Typography variant="overline">SDL</Typography></Button>
 				<Button style={{ marginLeft: 15 }} onClick={showPM}><Typography variant="overline">Pixlr Market</Typography></Button>
 			</Grid>
-				{
-					Boolean(active === 'Lint') &&
-					<Linting forjob={job} />
-				}
-				{
-					Boolean(active === 'UnitTest') &&
-					<UnitTest forjob={job} />
-				}
+			{
+				Boolean(active === 'Lint') &&
+				<Linting forjob={job} />
+			}
+			{
+				Boolean(active === 'UnitTest') &&
+				<UnitTest forjob={job} />
+			}
+			<Footer />
 		</Grid>
 	);
 }

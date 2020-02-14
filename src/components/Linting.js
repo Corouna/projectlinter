@@ -8,10 +8,16 @@ import {
 	SimpleAccordion
 } from './../components';
 
+const windowHeight = window.innerHeight;
+const contentHeight = windowHeight - 126 - 65 - 10; // Height of header part is 126 and footer is 65. 10 is the mmargin bottom for this linting page.
+
 const styles = theme => ({
 	base: {
-		width: 1100,
-		paddingTop: 30
+		minHeight: contentHeight / 2,
+		height: 'auto',
+		maxHeight: contentHeight,
+		overflowY: 'scroll',
+		marginBottom: 10
 	},
 	nested: {
     paddingLeft: theme.spacing(4),
@@ -81,7 +87,7 @@ const Linting = props => {
 
 
 	return (
-		<Grid item xs={12} container direction="row" className={classes.base}>
+		<Grid item xs={12} container direction="row" alignItems="stretch" className={classes.base}>
 			<Grid item xs={12} container justify="center">
 				<Typography variant="h5" style={{ fontWeight: 800 }}>LINTING RESULT</Typography>
 			</Grid>
