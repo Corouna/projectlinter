@@ -1,6 +1,22 @@
-/* This is a sample unit test file for testing Test.js inside Util folder */
+/* This is a numeric unit test file for testing Test.js inside Util folder */
 
-import { SumThis, SubtractThis, MultiplyThis, DivideThis } from './../utils/Test';
+// import * as FnScript from './../utils/Test';
+
+const SumThis = (a, b) => {
+  return a + b;
+};
+
+const SubtractThis = (a, b) => {
+	return a - b;
+}
+
+const MultiplyThis = (a, b) => {
+	return a * b;
+}
+
+const DivideThis = (a, b) => {
+	return a / b;
+}
 
 /* Testing SumThis */
 test('Adds 1 + 2 to equal 3', () => {
