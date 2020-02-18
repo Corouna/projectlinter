@@ -44,3 +44,6 @@ export const isSentence = s => {
 
 	return typeof s === 'string' && Boolean(s.split(' ').length > 1);
 }
+
+
+
