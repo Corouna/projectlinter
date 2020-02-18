@@ -18,7 +18,7 @@ const styles = theme => ({
 	}
 });
 
-const SimpleAccordion = props => {
+const LintingAccordion = props => {
 	const { classes, key = '', data = {} } = props;
 	const { id = '', file = '', open = false, handler = () => {}, error = [] } = data;
 
@@ -61,4 +61,4 @@ const SimpleAccordion = props => {
 
 };
 
-export default withStyles(styles)(SimpleAccordion);
+export default withStyles(styles)(LintingAccordion);

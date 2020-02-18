@@ -29,7 +29,6 @@ const isSentence = s => {
 	return typeof s === 'string' && Boolean(s.split(' ').length > 1);
 }
 
-
 /* Testing isWord */
 test('Determination is a word', () => {
   expect(isWord('Determination')).toBe(true);
@@ -43,4 +42,9 @@ test('Determination is a word', () => {
 /* Testing isSentence */
 test('I love to eat is a proper sentence', () => {
   expect(isSentence('I love to eat')).toBe(true);
+});
+
+/* Purposely make this fail */
+test('Boo is a proper sentence', () => {
+  expect(isSentence('Boo')).toBe(true);
 });

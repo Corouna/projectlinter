@@ -3,9 +3,9 @@ import _ from 'lodash';
 import { withStyles } from '@material-ui/core/styles';
 import { Grid, Paper, Typography, List, CircularProgress } from '@material-ui/core';
 import { SyncLoader } from 'react-spinners';
-import { JenkinsObj, processAsData } from './../utils/Utils';
+import { JenkinsObj, processLintingAsData } from './../utils/Utils';
 import {
-	SimpleAccordion
+	LintingAccordion
 } from './../components';
 
 const windowHeight = window.innerHeight;
@@ -60,7 +60,7 @@ const Linting = props => {
 
 		log.on('data', text => {
 			let actualText = text.split('npm run eslint')[1].split('npm ERR! code ELIFECYCLE')[0];
-			let data = processAsData(actualText);
+			let data = processLintingAsData(actualText);
 			setLoading(false);
 			setData(data);
 		});
@@ -83,7 +83,7 @@ const Linting = props => {
 		if (build){
 			getBuildLog(forjob);
 		}
-	}, [build])
+	}, [build]);
 
 
 	return (
@@ -103,7 +103,7 @@ const Linting = props => {
 				    >
 							{
 								data.map((f, idx) => (
-									<SimpleAccordion key={f.id} data={{ ...f, handler: openThis }}  />
+									<LintingAccordion key={f.id} data={{ ...f, handler: openThis }}  />
 								))
 							}
 						</List>

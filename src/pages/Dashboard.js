@@ -12,12 +12,20 @@ const styles = theme => ({
 
 const Dashboard = props => {
 	const { classes } = props;
-	const [active, setActive] = useState('Lint');
-	const [job, setJob] = useState('Linter');
+	const [active, setActive] = useState('UnitTest');
+	const [job, setJob] = useState('UnitTest');
 
 	/* For showing result of either ESLint or Unit Test */
-	const showLinting = useCallback(() => setActive('Lint'), []);
-	const showUnitTest = useCallback(() => setActive('UnitTest'), []);
+	const showLinting = useCallback(() => {
+		setActive('Lint');
+		setJob('Linter');
+	},
+	[]);
+	const showUnitTest = useCallback(() => { 
+		setActive('UnitTest');
+		setJob('UnitTest');
+	},
+	[]);
 
 	/* For selecting project to display its result */
 	const showSDL = useCallback(() => setJob('Linter'), []);
