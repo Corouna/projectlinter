@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Collapse, List, ListItem, ListItemIcon, ListItemText, Typography, Paper, Grid } from '@material-ui/core';
-import { InsertDriveFile, ExpandLess, ExpandMore } from '@material-ui/icons';
+import { Check, Close, ExpandLess, ExpandMore } from '@material-ui/icons';
 
 const styles = theme => ({
 	padLeft: {
@@ -26,7 +26,7 @@ const UnitTestAccordion = props => {
 		<Fragment key={key}>
 			<ListItem button onClick={() => handler(id)}>
         <ListItemIcon>
-          <InsertDriveFile />
+          {Boolean(file.includes('PASS ')) ? <Check style={{color: 'green'}} /> : <Close style={{color: 'red'}} />}
         </ListItemIcon>
         <ListItemText primary={file.replace('PASS ', '')} />
         {open ? <ExpandLess /> : <ExpandMore />}
@@ -36,10 +36,19 @@ const UnitTestAccordion = props => {
         	{
         		result.map((res, idx) => (
         			<Grid key={idx} container>
-        				<Grid item xs={12}>
-        					<Typography variant="caption">
-		        				{res}
-		        			</Typography>
+        				<Grid item xs={12} container>
+        					<Grid item xs={6} container justify="flex-start">
+	        					{
+	        						Boolean(res.includes('✓ ')) ? 
+	        						<Typography variant="caption" style={{color: 'green', marginRight: 20, fontWeight: 800}}>PASS</Typography> : 
+	        						<Typography variant="caption" style={{color: 'red', marginRight: 20, fontWeight: 800}}>FAIL</Typography>
+	        					}
+	        					<Typography variant="caption">
+			        				{res.replace('✓ ', '')}
+			        			</Typography>
+        					</Grid>
+        					<Grid item xs={6} container justify="flex-end">
+        					</Grid>
         				</Grid>
         			</Grid>
         		))
@@ -48,7 +57,6 @@ const UnitTestAccordion = props => {
       </Collapse>
     </Fragment>
 	)
-
 };
 
 export default withStyles(styles)(UnitTestAccordion);
