@@ -28,7 +28,7 @@ const UnitTestAccordion = props => {
         <ListItemIcon>
           {Boolean(file.includes('PASS ')) ? <Check style={{color: 'green'}} /> : <Close style={{color: 'red'}} />}
         </ListItemIcon>
-        <ListItemText primary={file.replace('PASS ', '')} />
+        <ListItemText primary={file.replace('PASS ', '').replace('FAIL ', '')} />
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
 			<Collapse in={open} timeout="auto" unmountOnExit>
@@ -44,7 +44,7 @@ const UnitTestAccordion = props => {
 	        						<Typography variant="caption" style={{color: 'red', marginRight: 20, fontWeight: 800}}>FAIL</Typography>
 	        					}
 	        					<Typography variant="caption">
-			        				{res.replace('✓ ', '')}
+			        				{res.replace('✓ ', '').replace('✕ ', '')}
 			        			</Typography>
         					</Grid>
         					<Grid item xs={6} container justify="flex-end">
