@@ -70,17 +70,50 @@ export const processJestAsData = text => {
     }
   });
 
-  console.log('Can i see what is newA ::: ', newA);
-
   let newB = [], idx = 1;
   for(let k in newA) {
+    let tempResult = [];
+
+
+    _.forEach(newA[k], (v, i) => {
+      //  If the case is pass
+      if (v.includes('✓ ')){
+        let tempObj = {
+          message: v,
+          error: []
+        };
+
+        tempResult.push(tempObj);  
+      }
+
+      // If the case is not pass
+      if (v.includes('✕ ')){
+        let tempError = [];
+
+        for (let a = i + 1; a < newA[k].length; a++){
+          if (newA[k][a].includes('✓ ') || newA[k][a].includes('✕ ')){
+            break;
+          }
+
+          tempError.push(newA[k][a]);
+        }
+
+        let tempObj =  {
+          message: v,
+          error: tempError
+        }
+
+        tempResult.push(tempObj);  
+      }
+    });
+
     newB.push({
       file: k,
-      result: newA[k],
+      result: tempResult,
       open: false,
       id: idx
     });
-    let i,a,temparray,chunk = 4;
+
     idx++;
   }
 
